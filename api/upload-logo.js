@@ -5,13 +5,19 @@ import { put } from '@vercel/blob';
 const MAX_SIZE = 5 * 1024 * 1024;
 
 async function requireAdmin(req, res) {
-  const token = getSessionFromCookie(req);
-  const session = await verifySession(token, query);
-  if (!session) {
-    res.status(401).json({ error: 'Non authentifié' });
+  try {
+    const token = getSessionFromCookie(req);
+    const session = await verifySession(token, query);
+    if (!session) {
+      res.status(401).json({ error: 'Non authentifié' });
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('requireAdmin error:', err);
+    res.status(500).json({ error: 'Erreur vérification session', detail: err?.message });
     return false;
   }
-  return true;
 }
 
 export default async function handler(req, res) {
@@ -22,6 +28,10 @@ export default async function handler(req, res) {
   if (!(await requireAdmin(req, res))) return;
 
   try {
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      return res.status(500).json({ error: 'Stockage Blob non configuré (token manquant)' });
+    }
+
     const { filename, contentType, data } = req.body || {};
 
     if (!filename || !contentType || !data) {
@@ -49,6 +59,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ file_url: url });
   } catch (err) {
     console.error('upload-logo error:', err);
-    return res.status(500).json({ error: 'Erreur serveur' });
+    return res.status(500).json({ error: 'Erreur serveur', detail: err?.message });
   }
 }

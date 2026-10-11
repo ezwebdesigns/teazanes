@@ -6,13 +6,19 @@ import { buildQuoteEmail } from '../../src/lib/quoteEmail.js';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 async function requireAdmin(req, res) {
-  const token = getSessionFromCookie(req);
-  const session = await verifySession(token, query);
-  if (!session) {
-    res.status(401).json({ error: 'Non authentifié' });
+  try {
+    const token = getSessionFromCookie(req);
+    const session = await verifySession(token, query);
+    if (!session) {
+      res.status(401).json({ error: 'Non authentifié' });
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('requireAdmin error:', err);
+    res.status(500).json({ error: 'Erreur vérification session', detail: err?.message });
     return false;
   }
-  return true;
 }
 
 export default async function handler(req, res) {
