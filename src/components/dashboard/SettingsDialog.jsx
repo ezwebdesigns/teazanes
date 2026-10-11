@@ -49,7 +49,10 @@ export default function SettingsDialog({ open, onClose, onSaved }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ filename: file.name, contentType: file.type, data: base64 }),
       });
-      if (!res.ok) throw new Error("Erreur upload");
+      if (!res.ok) {
+        const payload = await res.json().catch(() => ({}));
+        throw new Error(payload.detail || payload.error || "Erreur upload");
+      }
       const data = await res.json();
       const url = data.file_url;
       if (!url) throw new Error("no url");
@@ -61,7 +64,7 @@ export default function SettingsDialog({ open, onClose, onSaved }) {
         description: "Il apparaît maintenant dans l'assistant et dans l'entête de la soumission.",
       });
     } catch (err) {
-      toast({ title: "Erreur", description: "Impossible d'enregistrer le logo.", variant: "destructive" });
+      toast({ title: "Erreur", description: err?.message || "Impossible d'enregistrer le logo.", variant: "destructive" });
     } finally {
       setBusy(false);
       e.target.value = "";
