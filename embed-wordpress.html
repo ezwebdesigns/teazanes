@@ -1,0 +1,22 @@
+<!-- Tisanes Canada™ B2B Assistant — WordPress Embed -->
+<!-- Remplacez l'URL ci-dessous par votre URL Vercel de production après déploiement -->
+<!-- Exemple : https://tisanes-b2b.vercel.app/assistant -->
+<iframe
+  src="https://VOTRE-APP.vercel.app/assistant"
+  width="100%"
+  height="680"
+  frameborder="0"
+  style="border: none; border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(12, 59, 46, 0.25);"
+  title="Assistant soumissions B2B Tisanes Canada™"
+  allow="clipboard-write"
+></iframe>
+
+<!-- Script optionnel pour gérer la fermeture depuis l'iframe -->
+<script>
+  window.addEventListener('message', function(event) {
+    if (event.data?.type === 'tisanes:close') {
+      const iframe = document.querySelector('iframe[title="Assistant soumissions B2B Tisanes Canada™"]');
+      if (iframe) iframe.style.display = 'none';
+    }
+  });
+</script>
