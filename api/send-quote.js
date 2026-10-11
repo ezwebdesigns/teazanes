@@ -2,7 +2,6 @@ import { query } from './_db.js';
 import { getSessionFromCookie, verifySession } from './_admin.js';
 import { Resend } from 'resend';
 import { buildQuoteEmail } from '../../src/lib/quoteEmail.js';
-import { getCompanySettings } from '../../src/lib/companySettings.js';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

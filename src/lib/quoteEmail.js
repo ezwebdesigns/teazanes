@@ -1,4 +1,4 @@
-import { BLENDS, PACKAGING_OPTIONS, SERVICES, COMPANY, LEAD_TIMES, TERMS } from "@/data/knowledgeBase";
+import { BLENDS, PACKAGING_OPTIONS, SERVICES, COMPANY, LEAD_TIMES, TERMS } from "../data/knowledgeBase";
 
 function escapeHtml(value = "") {
   return String(value).replace(

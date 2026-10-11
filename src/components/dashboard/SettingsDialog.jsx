@@ -24,17 +24,30 @@ export default function SettingsDialog({ open, onClose, onSaved }) {
     }
   }, [open]);
 
+  const fileToBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result).split(',')[1] || '');
+      reader.onerror = () => reject(new Error('read error'));
+      reader.readAsDataURL(file);
+    });
+
   const handleFile = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      toast({ title: "Erreur", description: "Fichier trop volumineux (max 5MB).", variant: "destructive" });
+      e.target.value = "";
+      return;
+    }
     setBusy(true);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
+      const base64 = await fileToBase64(file);
       const res = await fetch('/api/upload-logo', {
         method: 'POST',
         credentials: 'include',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: file.name, contentType: file.type, data: base64 }),
       });
       if (!res.ok) throw new Error("Erreur upload");
       const data = await res.json();
