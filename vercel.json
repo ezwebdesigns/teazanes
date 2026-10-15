@@ -18,12 +18,12 @@
           "value": "nosniff"
         },
         {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://tisanes.ca https://www.tisanes.ca https://chat.tisanes.ca https://app.tisanes.ca"
         }
       ]
     }
