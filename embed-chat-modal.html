@@ -23,14 +23,9 @@
     .tisanes-cta__btn{display:inline-block;border:none;cursor:pointer;background:#0c3b2e;color:#fff;font-size:1rem;font-weight:600;padding:.85rem 2rem;border-radius:999px;box-shadow:0 10px 25px -8px rgba(12,59,46,.5);transition:transform .15s ease,background .15s ease}
     .tisanes-cta__btn:hover{background:#14532d;transform:translateY(-1px)}
     .tisanes-cta__alt{display:block;margin-top:.9rem;font-size:.85rem;color:#78716c}
-    .tisanes-modal{position:fixed;inset:0;z-index:999999;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(12,20,17,.6);backdrop-filter:blur(2px)}
-    .tisanes-modal[data-open="true"]{display:flex}
-    .tisanes-modal__box{position:relative;width:min(960px,100%);height:min(680px,92vh);background:#fff;border-radius:1.25rem;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,.4);display:flex;flex-direction:column}
-    .tisanes-modal__head{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;background:#0c3b2e;color:#ecfdf5;font-weight:600;font-size:.95rem}
-    .tisanes-modal__close{border:none;cursor:pointer;background:transparent;color:#ecfdf5;font-size:1.4rem;line-height:1;padding:.2rem .5rem;border-radius:.5rem}
-    .tisanes-modal__close:hover{background:rgba(255,255,255,.15)}
-    .tisanes-modal__frame{flex:1;width:100%;height:100%;border:none}
-    @media (max-width:640px){.tisanes-modal{padding:0}.tisanes-modal__box{width:100%;height:100dvh;border-radius:0}}
+    .tisanes-modal{position:fixed;inset:0;z-index:999999;display:none}
+    .tisanes-modal[data-open="true"]{display:block}
+    .tisanes-modal__frame{display:block;width:100%;height:100%;border:none;background:transparent}
   </style>
 
   <p class="tisanes-cta__eyebrow">Soumission B2B — Marque privée &amp; vrac</p>
@@ -40,13 +35,7 @@
   <a class="tisanes-cta__alt" href="#tisanes-form-classique">ou remplissez le formulaire classique ci-dessous ↓</a>
 
   <div class="tisanes-modal" data-tisanes-modal role="dialog" aria-modal="true" aria-label="Assistant soumissions B2B">
-    <div class="tisanes-modal__box">
-      <div class="tisanes-modal__head">
-        <span>Assistant soumissions B2B — Tisanes Canada™</span>
-        <button type="button" class="tisanes-modal__close" data-tisanes-close aria-label="Fermer">×</button>
-      </div>
-      <iframe class="tisanes-modal__frame" data-tisanes-frame data-src="https://chat.tisanes.ca/assistant" title="Assistant soumissions B2B Tisanes Canada™" allow="clipboard-write"></iframe>
-    </div>
+    <iframe class="tisanes-modal__frame" data-tisanes-frame data-src="https://chat.tisanes.ca/assistant?embed=panel" title="Assistant soumissions B2B Tisanes Canada™" allow="clipboard-write"></iframe>
   </div>
 </section>
 ==================== FIN VARIANTE FR ==================== -->
@@ -62,14 +51,9 @@
     .tisanes-cta__btn{display:inline-block;border:none;cursor:pointer;background:#0c3b2e;color:#fff;font-size:1rem;font-weight:600;padding:.85rem 2rem;border-radius:999px;box-shadow:0 10px 25px -8px rgba(12,59,46,.5);transition:transform .15s ease,background .15s ease}
     .tisanes-cta__btn:hover{background:#14532d;transform:translateY(-1px)}
     .tisanes-cta__alt{display:block;margin-top:.9rem;font-size:.85rem;color:#78716c}
-    .tisanes-modal{position:fixed;inset:0;z-index:999999;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(12,20,17,.6);backdrop-filter:blur(2px)}
-    .tisanes-modal[data-open="true"]{display:flex}
-    .tisanes-modal__box{position:relative;width:min(960px,100%);height:min(680px,92vh);background:#fff;border-radius:1.25rem;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,.4);display:flex;flex-direction:column}
-    .tisanes-modal__head{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;background:#0c3b2e;color:#ecfdf5;font-weight:600;font-size:.95rem}
-    .tisanes-modal__close{border:none;cursor:pointer;background:transparent;color:#ecfdf5;font-size:1.4rem;line-height:1;padding:.2rem .5rem;border-radius:.5rem}
-    .tisanes-modal__close:hover{background:rgba(255,255,255,.15)}
-    .tisanes-modal__frame{flex:1;width:100%;height:100%;border:none}
-    @media (max-width:640px){.tisanes-modal{padding:0}.tisanes-modal__box{width:100%;height:100dvh;border-radius:0}}
+    .tisanes-modal{position:fixed;inset:0;z-index:999999;display:none}
+    .tisanes-modal[data-open="true"]{display:block}
+    .tisanes-modal__frame{display:block;width:100%;height:100%;border:none;background:transparent}
   </style>
 
   <p class="tisanes-cta__eyebrow">B2B Quote — Private label &amp; bulk</p>
@@ -79,13 +63,7 @@
   <a class="tisanes-cta__alt" href="#tisanes-form-classique">or fill in the classic form below ↓</a>
 
   <div class="tisanes-modal" data-tisanes-modal role="dialog" aria-modal="true" aria-label="B2B Quote Assistant">
-    <div class="tisanes-modal__box">
-      <div class="tisanes-modal__head">
-        <span>B2B Quote Assistant — Tisanes Canada™</span>
-        <button type="button" class="tisanes-modal__close" data-tisanes-close aria-label="Close">×</button>
-      </div>
-      <iframe class="tisanes-modal__frame" data-tisanes-frame data-src="https://chat.tisanes.ca/assistant" title="B2B Quote Assistant Tisanes Canada™" allow="clipboard-write"></iframe>
-    </div>
+    <iframe class="tisanes-modal__frame" data-tisanes-frame data-src="https://chat.tisanes.ca/assistant?embed=panel" title="B2B Quote Assistant Tisanes Canada™" allow="clipboard-write"></iframe>
   </div>
 </section>
 ==================== FIN VARIANTE EN ==================== -->
